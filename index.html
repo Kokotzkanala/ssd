@@ -3,46 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FBI Meme Launch</title>
+<title>Link Redirect</title>
 <style>
+  /* Basic reset */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
   html, body {
-    margin: 0;
-    padding: 0;
     height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: black;
-    color: white;
-    font-family: Arial, sans-serif;
+    flex-direction: column;
+  }
+
+  .container {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 350px;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #333;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
   }
 
   button {
-    padding: 20px 40px;
-    font-size: 2rem;
-    cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2rem;
     border: none;
-    border-radius: 10px;
-    background-color: red;
+    border-radius: 8px;
+    background-color: #007bff;
     color: white;
-    transition: 0.2s;
+    cursor: pointer;
+    transition: background 0.2s;
   }
 
   button:hover {
-    background-color: darkred;
+    background-color: #0056b3;
   }
 
+  /* Video fullscreen style */
   video {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    display: none; /* hidden initially */
+    display: none;
   }
 </style>
 </head>
 <body>
 
-<button id="launchBtn">Redirect to the Site</button>
+<div class="container" id="redirectContainer">
+  <h1>Enter Your Link</h1>
+  <input type="text" placeholder="Paste URL here" id="urlInput" />
+  <button id="launchBtn">Go</button>
+</div>
 
 <video id="fbiVideo" loop>
   <source src="FBI.mp4" type="video/mp4">
@@ -52,20 +83,23 @@
 <script>
 const button = document.getElementById('launchBtn');
 const video = document.getElementById('fbiVideo');
+const container = document.getElementById('redirectContainer');
 
 button.addEventListener('click', async () => {
-    // Hide the button
-    button.style.display = 'none';
+    const url = document.getElementById('urlInput').value;
 
-    // Show the video
+    // Hide the container
+    container.style.display = 'none';
+
+    // Show video
     video.style.display = 'block';
 
-    // Try to go fullscreen
+    // Fullscreen
     if (video.requestFullscreen) {
         await video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) { /* Safari */
+    } else if (video.webkitRequestFullscreen) { 
         await video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) { /* IE11 */
+    } else if (video.msRequestFullscreen) { 
         await video.msRequestFullscreen();
     }
 
@@ -73,6 +107,9 @@ button.addEventListener('click', async () => {
     video.play().catch(() => {
         console.log("Playback blocked. User interaction is required.");
     });
+
+    // Optional: redirect after video ends (e.g., 5 seconds)
+    // setTimeout(() => { window.location.href = url || "https://example.com"; }, 5000);
 });
 </script>
 
