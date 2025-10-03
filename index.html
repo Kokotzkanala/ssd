@@ -3,115 +3,232 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Link Redirect</title>
+<title>quickli/quicklinks8gfg47h/AbCd12 — Redirecting</title>
 <style>
-  /* Basic reset */
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+:root{
+  --bg:#fff;
+  --card:#fff;
+  --accent:#ff6600;
+  --accent-dark:#cc5200;
+  --muted:#6b7280;
+  --radius:14px;
+}
 
-  html, body {
-    height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9f9f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Inter,system-ui,sans-serif;
+  background:var(--bg);
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  min-height:100vh;
+  padding:20px;
+  color:#111;
+}
 
-  .container {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    text-align: center;
-    width: 350px;
-  }
+/* Container */
+.container{
+  width:100%;
+  max-width:420px;
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:0 12px 40px rgba(0,0,0,0.08);
+  overflow:hidden;
+}
 
-  h1 {
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-    color: #333;
-  }
+/* Header with logo */
+.header{
+  padding:20px;
+  text-align:center;
+  background:linear-gradient(90deg,var(--accent),var(--accent-dark));
+  color:#fff;
+}
+.logo{
+  width:48px;
+  height:48px;
+  margin:0 auto 8px auto;
+  background:linear-gradient(135deg,var(--accent),var(--accent-dark));
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  font-size:20px;
+  color:#fff;
+}
+.header h1{
+  font-size:1.4rem;
+  margin-bottom:6px;
+}
+.header p{
+  font-size:0.95rem;
+  opacity:0.85;
+}
 
-  input {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
-  }
+/* Countdown & progress */
+.countdown{
+  padding:16px;
+  text-align:center;
+}
+.timer{
+  font-size:2rem;
+  font-weight:700;
+  margin-bottom:6px;
+  color:var(--accent-dark);
+}
+.status{
+  font-size:0.95rem;
+  color:var(--muted);
+  margin-bottom:12px;
+}
+.progress-bar{
+  width:100%;
+  height:6px;
+  background:#e5e7eb;
+  border-radius:3px;
+  overflow:hidden;
+  margin:0 auto;
+}
+.progress{
+  height:100%;
+  width:0%;
+  background:var(--accent);
+  transition:width 0.2s linear;
+  border-radius:3px;
+}
 
-  button {
-    width: 100%;
-    padding: 12px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
+/* Continue button */
+.continue{
+  padding:16px;
+}
+.btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:var(--radius);
+  font-size:1.05rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.15s;
+}
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+  box-shadow:0 6px 18px rgba(255,102,0,0.15);
+}
+.btn-primary:active{
+  transform:translateY(2px);
+  box-shadow:0 4px 12px rgba(255,102,0,0.12);
+}
 
-  button:hover {
-    background-color: #0056b3;
-  }
+/* Footer */
+.footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 16px;
+  font-size:0.85rem;
+  color:var(--muted);
+}
 
-  /* Video fullscreen style */
-  video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    display: none;
-  }
+/* Video overlay */
+.overlay{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:#000;
+  z-index:9999;
+}
+.overlay video{
+  width:100vw;
+  height:100vh;
+  object-fit:cover;
+}
+
+/* Mobile adjustments */
+@media(max-width:480px){
+  .container{max-width:100%;}
+  .header h1{font-size:1.25rem;}
+  .timer{font-size:1.6rem;}
+}
 </style>
 </head>
 <body>
 
-<div class="container" id="redirectContainer">
-  <h1>Enter Your Link</h1>
-  <input type="text" placeholder="Paste URL here" id="urlInput" />
-  <button id="launchBtn">Go</button>
+<div class="container">
+  <div class="header">
+    <div class="logo">Q</div>
+    <h1>quicklinks8gfg47h/AbCd12</h1>
+    <p>Redirecting to your destination...</p>
+  </div>
+
+  <div class="countdown">
+    <div class="timer" id="timer">5</div>
+    <div class="status" id="statusText">Preparing your redirect...</div>
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>
+  </div>
+
+  <div class="continue">
+    <button id="continueBtn" class="btn btn-primary">Continue</button>
+  </div>
+
+  <div class="footer">
+    <span>Powered by quicklinks8gfg47h</span>
+    <span id="eta">5s</span>
+  </div>
 </div>
 
-<video id="fbiVideo" loop>
-  <source src="FBI.mp4" type="video/mp4">
-  Your browser does not support video.
-</video>
+<div class="overlay" id="overlay">
+  <video id="fbiVideo" loop playsinline webkit-playsinline>
+    <source src="FBI.mp4" type="video/mp4">
+    Your browser does not support video.
+  </video>
+</div>
 
 <script>
-const button = document.getElementById('launchBtn');
-const video = document.getElementById('fbiVideo');
-const container = document.getElementById('redirectContainer');
+const timerEl = document.getElementById('timer');
+const statusEl = document.getElementById('statusText');
+const progressEl = document.getElementById('progress');
+const etaEl = document.getElementById('eta');
+const continueBtn = document.getElementById('continueBtn');
+const overlay = document.getElementById('overlay');
+const fbiVideo = document.getElementById('fbiVideo');
 
-button.addEventListener('click', async () => {
-    const url = document.getElementById('urlInput').value;
+let countdown = 5;
+timerEl.textContent = countdown;
+etaEl.textContent = countdown+'s';
+let interval = setInterval(()=>{
+  countdown--;
+  if(countdown<=0){
+    clearInterval(interval);
+    timerEl.textContent='0';
+    etaEl.textContent='Ready';
+    statusEl.textContent='Ready — click Continue to proceed';
+    progressEl.style.width='100%';
+  } else{
+    timerEl.textContent=countdown;
+    etaEl.textContent=countdown+'s';
+    progressEl.style.width=((5-countdown)/5*100)+'%';
+  }
+},1000);
 
-    // Hide the container
-    container.style.display = 'none';
-
-    // Show video
-    video.style.display = 'block';
-
-    // Fullscreen
-    if (video.requestFullscreen) {
-        await video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) { 
-        await video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) { 
-        await video.msRequestFullscreen();
-    }
-
-    // Play the video
-    video.play().catch(() => {
-        console.log("Playback blocked. User interaction is required.");
-    });
-
-    // Optional: redirect after video ends (e.g., 5 seconds)
-    // setTimeout(() => { window.location.href = url || "https://example.com"; }, 5000);
+continueBtn.addEventListener('click', async ()=>{
+  overlay.style.display='flex';
+  try{
+    const reqFS=fbiVideo.requestFullscreen||fbiVideo.webkitRequestFullscreen||fbiVideo.msRequestFullscreen;
+    if(reqFS) await reqFS.call(fbiVideo);
+  }catch(e){}
+  try{await fbiVideo.play();}catch(e){
+    console.log('Autoplay blocked');
+  }
+  fbiVideo.addEventListener('ended',()=>{
+    overlay.style.display='none';
+  },{once:true});
 });
 </script>
-
 </body>
 </html>
