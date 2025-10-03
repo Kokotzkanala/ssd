@@ -3,41 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FBI.mp3 Autoplay</title>
+<title>FBI Meme Launch</title>
 <style>
   html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background: black;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
   }
-  img {
+
+  button {
+    padding: 20px 40px;
+    font-size: 2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    transition: 0.2s;
+  }
+
+  button:hover {
+    background-color: darkred;
+  }
+
+  video {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
+    display: none; /* hidden initially */
   }
 </style>
 </head>
 <body>
-<!-- Optional background image -->
-<img src="fbi_background.jpg" alt="FBI">
 
-<!-- Audio -->
-<audio id="fbiAudio" autoplay>
-  <source src="FBI.MP3" type="audio/mpeg">
-  Your browser does not support audio.
-</audio>
+<button id="launchBtn">Redirect to the Site</button>
+
+<video id="fbiVideo" loop>
+  <source src="FBI.mp4" type="video/mp4">
+  Your browser does not support video.
+</video>
 
 <script>
-  const audio = document.getElementById('fbiAudio');
-  // Attempt autoplay
-  audio.play().catch(() => {
-    // If blocked, ask user to click to play
-    document.body.addEventListener('click', () => audio.play());
-  });
+const button = document.getElementById('launchBtn');
+const video = document.getElementById('fbiVideo');
+
+button.addEventListener('click', async () => {
+    // Hide the button
+    button.style.display = 'none';
+
+    // Show the video
+    video.style.display = 'block';
+
+    // Try to go fullscreen
+    if (video.requestFullscreen) {
+        await video.requestFullscreen();
+    } else if (video.webkitRequestFullscreen) { /* Safari */
+        await video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) { /* IE11 */
+        await video.msRequestFullscreen();
+    }
+
+    // Play the video
+    video.play().catch(() => {
+        console.log("Playback blocked. User interaction is required.");
+    });
+});
 </script>
+
 </body>
 </html>
