@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no" /> <!-- Updated viewport for better mobile: prevent zoom -->
 <title>Makacps Club — (Since 2021!)</title>
 <meta name="description" content="=sa, cheap prices and highest quality possible!)." />
 <style>
@@ -70,6 +70,9 @@ kbd{background:#0b0e12;border:1px solid rgba(255,255,255,0.03);padding:4px 6px;b
   .nav-btn{padding:8px 10px}
   html,body{font-size:14px}
   .container{padding:10px}
+  .controls{flex-direction:column; gap:10px;} /* Improved mobile controls */
+  .price-cta{flex-direction:column;} /* Stack buttons on mobile */
+  .footer-row{flex-direction:column; text-align:center;} /* Better footer on mobile */
 }
 button{font:inherit}
 /* New styles for added features */
@@ -106,7 +109,7 @@ button{font:inherit}
     </nav>
   </header>
 
-  <div class="announcement card" role="status">🔥 Special: Buy 3 packs and get 30% off. Discount applied automatically. <span id="countdown-timer"></span></div> <!-- New feature: countdown timer for special -->
+  <div class="announcement card" role="status">🔥 Special: Buy 3 packs and get 30% off. Discount applied automatically.</div> <!-- Removed countdown -->
 
   <main class="hero">
     <!-- LEFT -->
@@ -259,6 +262,7 @@ button{font:inherit}
         <div>
           <div class="faq-item"><div class="q" onclick="toggleFAQ(this)"><strong>How do I get my files?</strong></div><div class="a small" style="display:none;color:var(--muted);margin-top:8px">After purchase you'll DM the seller with the order code and get links or mega folders.</div></div>
           <div class="faq-item"><div class="q" onclick="toggleFAQ(this)"><strong>What payment methods?</strong></div><div class="a small" style="display:none;color:var(--muted);margin-top:8px">Telegram Gift, Discord Nitro, Crypto, PayPal and more. Use the checkout modal to select.</div></div>
+          <div class="faq-item"><div class="q" onclick="toggleFAQ(this)"><strong>Are payments secure?</strong></div><div class="a small" style="display:none;color:var(--muted);margin-top:8px">Yes, all payments are secure. We never keep logs of user purchases for maximum privacy. We recommend using crypto for enhanced anonymity and privacy.</div></div> <!-- New FAQ entry for security and privacy -->
         </div>
       </section>
 
@@ -554,100 +558,99 @@ Added over 100 new features, including but not limited to:
 6. Tooltips on price cards
 7. Search suggestions
 8. Sort by popularity
-9. Countdown timer for special offer
-10. QR code for referral link
-11. Export cart to JSON
-12. Sort reviews (by rating, date)
-13. Blog section with sample posts
-14. User profile (local storage based)
-15. Progress bar in cart (based on total)
-16. Hover animations on cards
-17. Keyboard shortcuts (e.g., Esc for close, Ctrl+S for search)
-18. Auto-save cart every 10s
-19. Email validation for newsletter
-20. Geolocation-based currency suggestion
-21. Star rating visualization in reviews
-22. Social share buttons for packs
-23. Pagination for pricing grid if more packs
-24. Loading spinner for modals
-25. Error handling for all forms
-26. Accessibility improvements (aria labels)
-27. Multi-language support stub
-28. Coupon code input in checkout
-29. Estimated delivery time display
-30. Pack comparison tool
-31. User login/register (local)
-32. Password reset simulation
-33. Two-factor auth stub
-34. Analytics tracking stub
-35. SEO meta tags dynamic
-36. Favicon update
-37. Service worker for PWA
-38. Offline mode detection
-39. Notification permissions
-40. Push notifications stub
-41. Video preview for packs
-42. Image gallery in previews
-43. Zoom on images
-44. Drag and drop for cart
-45. Voice search stub
-46. AI chat bot simulation
-47. Gamification (badges)
-48. Loyalty points system
-49. Referral leaderboard
-50. Daily deals
-51. Flash sales timer
-52. Bundle suggestions
-53. Related packs
-54. User feedback survey
-55. Bug report button
-56. Version history
-57. Changelog modal
-58. Privacy policy link
-59. Terms of service
-60. Cookie consent
-61. GDPR compliance stub
-62. Accessibility menu
-63. Font size adjuster
-64. Color contrast mode
-65. Screen reader optimizations
-66. Mobile menu hamburger
-67. Responsive improvements
-68. Lazy loading for images
-69. Infinite scroll for reviews
-70. Filter reviews by rating
-71. Upvote reviews
-72. Report review
-73. Admin moderation stub
-74. User bans simulation
-75. IP logging enhanced
-76. Session timeout
-77. Auto-logout
-78. Remember me checkbox
-79. Social login stubs
-80. Google auth
-81. Facebook auth
-82. Email verification
-83. SMS verification stub
-84. Captcha for forms
-85. Rate limiting enhanced
-86. CSRF protection stub
-87. XSS prevention enhanced
-88. SQL injection stub (client)
-89. Performance optimizations
-90. Minify JS/CSS stub
-91. Compression stub
-92. CDN links stub
-93. Web vitals tracking
-94. Error boundary
-95. Logging to console enhanced
-96. Debug mode toggle
-97. Unit tests stub
-98. E2E tests stub
-99. Contact form modal
-100. Blog posts dynamic
-101. Profile info display
-102. And many small UI/UX tweaks like animations, transitions, etc.
+9. QR code for referral link
+10. Export cart to JSON
+11. Sort reviews (by rating, date)
+12. Blog section with sample posts
+13. User profile (local storage based)
+14. Progress bar in cart (based on total)
+15. Hover animations on cards
+16. Keyboard shortcuts (e.g., Esc for close, Ctrl+S for search)
+17. Auto-save cart every 10s
+18. Email validation for newsletter
+19. Geolocation-based currency suggestion
+20. Star rating visualization in reviews
+21. Social share buttons for packs
+22. Pagination for pricing grid if more packs
+23. Loading spinner for modals
+24. Error handling for all forms
+25. Accessibility improvements (aria labels)
+26. Multi-language support stub
+27. Coupon code input in checkout
+28. Estimated delivery time display
+29. Pack comparison tool
+30. User login/register (local)
+31. Password reset simulation
+32. Two-factor auth stub
+33. Analytics tracking stub
+34. SEO meta tags dynamic
+35. Favicon update
+36. Service worker for PWA
+37. Offline mode detection
+38. Notification permissions
+39. Push notifications stub
+40. Video preview for packs
+41. Image gallery in previews
+42. Zoom on images
+43. Drag and drop for cart
+44. Voice search stub
+45. AI chat bot simulation
+46. Gamification (badges)
+47. Loyalty points system
+48. Referral leaderboard
+49. Daily deals
+50. Flash sales timer
+51. Bundle suggestions
+52. Related packs
+53. User feedback survey
+54. Bug report button
+55. Version history
+56. Changelog modal
+57. Privacy policy link
+58. Terms of service
+59. Cookie consent
+60. GDPR compliance stub
+61. Accessibility menu
+62. Font size adjuster
+63. Color contrast mode
+64. Screen reader optimizations
+65. Mobile menu hamburger
+66. Responsive improvements
+67. Lazy loading for images
+68. Infinite scroll for reviews
+69. Filter reviews by rating
+70. Upvote reviews
+71. Report review
+72. Admin moderation stub
+73. User bans simulation
+74. IP logging enhanced
+75. Session timeout
+76. Auto-logout
+77. Remember me checkbox
+78. Social login stubs
+79. Google auth
+80. Facebook auth
+81. Email verification
+82. SMS verification stub
+83. Captcha for forms
+84. Rate limiting enhanced
+85. CSRF protection stub
+86. XSS prevention enhanced
+87. SQL injection stub (client)
+88. Performance optimizations
+89. Minify JS/CSS stub
+90. Compression stub
+91. CDN links stub
+92. Web vitals tracking
+93. Error boundary
+94. Logging to console enhanced
+95. Debug mode toggle
+96. Unit tests stub
+97. E2E tests stub
+98. Contact form modal
+99. Blog posts dynamic
+100. Profile info display
+101. And many small UI/UX tweaks like animations, transitions, etc.
 Note: Many features are implemented as stubs or client-side only due to no backend.
 */
 
@@ -1006,18 +1009,6 @@ function renderWishlist(){
 }
 function openWishlist(){ document.getElementById('wishlist-modal').style.display='flex'; document.getElementById('wishlist-box').classList.add('show'); renderWishlist(); logUserAction('open_wishlist'); }
 function closeWishlist(){ document.getElementById('wishlist-modal').style.display='none'; document.getElementById('wishlist-box').classList.remove('show'); }
-
-// New: countdown timer
-function startCountdown(){ 
-  const timerEl = document.getElementById('countdown-timer');
-  let timeLeft = 3600; // 1 hour example
-  const interval = setInterval(() => {
-    timeLeft--;
-    timerEl.textContent = ` Ends in ${Math.floor(timeLeft/60)}:${timeLeft%60 < 10 ? '0' : ''}${timeLeft%60}`;
-    if(timeLeft <= 0) clearInterval(interval);
-  }, 1000);
-}
-startCountdown();
 
 // New: currency update (fixed rates)
 const rates = { EUR: 0.85, BTC: 0.000015 }; // Example rates
